@@ -3,6 +3,7 @@ using Quiz_platform.DAL.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -33,7 +34,7 @@ namespace Quiz_platform.DAL.Data.Context
                       Id= 1, 
                       Name= "C# Basics Quiz",
                       Description="Test your knowledge of C# fundamentals, including syntax, data types, and OOP concepts" , 
-                      Image="csharp.png", 
+                      Image="Images\\Quizzes\\csharp.png", 
                       Date= new DateTime(2025, 5, 5)
                   },
                   new Quiz 
@@ -41,7 +42,7 @@ namespace Quiz_platform.DAL.Data.Context
                       Id= 2, 
                       Name= "Java Fundamentals",
                       Description="A quiz covering Java syntax, OOP concepts, and basic Java programming principles." ,
-                      Image="java.png", 
+                      Image="Images\\Quizzes\\java.png", 
                       Date= new DateTime(2025, 2, 5)
                   },
                   new Quiz 
@@ -49,7 +50,7 @@ namespace Quiz_platform.DAL.Data.Context
                       Id= 3, 
                       Name= "Python for Beginners",
                       Description="A quiz covering Python syntax, data structures, and basic algorithms." , 
-                      Image="python.png", 
+                      Image="Images\\Quizzes\\python.png", 
                       Date= new DateTime(2025, 6, 6)
                   },
                   new Quiz 
@@ -57,7 +58,7 @@ namespace Quiz_platform.DAL.Data.Context
                       Id= 4,
                       Name= "SQL & Databases",
                       Description="Check your knowledge on SQL queries, normalization, and database management." , 
-                      Image="sql.png", 
+                      Image="Images\\Quizzes\\sql.png", 
                       Date= new DateTime(2025, 8, 8)},
 
             };
@@ -149,6 +150,10 @@ namespace Quiz_platform.DAL.Data.Context
             };
 
             #endregion
+
+            modelBuilder.Entity<Quiz>().HasData(Quizes);
+            modelBuilder.Entity<Question>().HasData(Questions);
+            modelBuilder.Entity<Answer>().HasData(Answers);
 
             #endregion
 

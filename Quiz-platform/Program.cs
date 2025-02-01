@@ -1,5 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Quiz_platform.BL.Managers.Questions;
+using Quiz_platform.BL.Managers.Quizes;
+using Quiz_platform.BL.Managers.Quizzes;
 using Quiz_platform.DAL.Data.Context;
+using Quiz_platform.DAL.Repositories.Questions;
+using Quiz_platform.DAL.Repositories.Quizzes;
+using Quiz_platform.DAL.UnitOfWork;
 
 namespace Quiz_platform
 {
@@ -14,8 +20,15 @@ namespace Quiz_platform
 
             var connectionString = builder.Configuration.GetConnectionString("QuizDb");
 
-             builder.Services.AddDbContext<QuizContext>(options =>
+            // Register Custom Services to the container.
+            builder.Services.AddDbContext<QuizContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+            builder.Services.AddScoped<IQuizManager, QuizManager>();
+            builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+            builder.Services.AddScoped<IQuestionManager, QuestionManager>();
 
             var app = builder.Build();
 

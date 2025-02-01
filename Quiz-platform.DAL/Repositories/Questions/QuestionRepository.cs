@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz_platform.DAL.Repositories.Quizes
+namespace Quiz_platform.DAL.Repositories.Questions
 {
-    public class QuizRepository : GenericRepository<Quiz>, IQuizRepository
+    public class QuestionRepository : GenericRepository<Question>, IQuestionRepository
     {
-        public QuizRepository(QuizContext context) : base(context)
+        public QuestionRepository(QuizContext context) : base(context)
         {
+
         }
     }
 }

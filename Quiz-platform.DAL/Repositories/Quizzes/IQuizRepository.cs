@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Quiz_platform.DAL.Repositories.Quizes
+namespace Quiz_platform.DAL.Repositories.Quizzes
 {
     public interface IQuizRepository: IGenericRepository<Quiz>
     {

@@ -9,8 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Repositories\Answers\" />
-    <Folder Include="Repositories\Questions\" />
-    <Folder Include="UnitOfWork\" />
   </ItemGroup>
 
   <ItemGroup>

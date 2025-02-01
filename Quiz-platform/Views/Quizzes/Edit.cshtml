@@ -1,0 +1,44 @@
+﻿@model QuizEditVM
+
+<div class="row" style="height:600px">
+    <div class="col-md-6">
+
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <h3>Edit quiz</h3>
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="Image" type="hidden"/>
+            <div class="form-group  mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group  mb-3">
+                <label asp-for="Description"></label>
+                <textarea id="mytextarea" asp-for="Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Date"> </label>
+                <input asp-for="Date" class="form-control">
+                <span class="text-danger" asp-validation-for="Date"></span>
+            </div>
+
+            <label asp-for="Image"></label>
+            <div class="form-group  mb-3">
+                <input type="file" name="file" id="fileImage" class="form-control" />
+                <span class="text-danger" asp-validation-for="Image"></span>
+            </div>
+
+            <div class="form-group  mb-3">
+                <button class="btn btn-success" type="submit">Edit</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-4">
+        <div class="container">
+            <img src="~/@Model.Image" alt="quiz photo" width="300" height="300" />
+        </div>
+    </div>
+</div>

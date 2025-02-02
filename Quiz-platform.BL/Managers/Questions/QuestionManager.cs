@@ -84,6 +84,7 @@ namespace Quiz_platform.BL.Managers.Questions
         {
             return _unitOfWork.QuestionRepository
                  .GetAll()
+                 .Where(q => q.AnswerType == "Choices")
                  .Select(q => new Option(q.QuestionText, q.Id.ToString()));
         }
 

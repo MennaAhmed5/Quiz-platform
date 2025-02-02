@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Quiz_platform.BL.Managers.Quizes;
 using Quiz_platform.BL.Managers.Quizzes;
@@ -7,6 +8,8 @@ using Quiz_platform.DAL.UnitOfWork;
 
 namespace Quiz_platform.Controllers
 {
+
+    [Authorize(Policy = "AdminPolicy")]
     public class QuizzesController : Controller
     {
         private readonly IQuizManager _quizManager;
@@ -38,6 +41,19 @@ namespace Quiz_platform.Controllers
 
             if (ModelState.IsValid)
             {
+                string rootPath = _webHostEnvironment.WebRootPath; //wwwroot folder
+                if (file != null)
+                {
+                    string filename = Guid.NewGuid().ToString();
+                    var Upload = Path.Combine(rootPath, @"Images\Quizzes");
+                    var ext = Path.GetExtension(file.FileName);
+
+                    using (var fileStream = new FileStream(Path.Combine(Upload, filename + ext), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    quizAddVM.Image = @"Images\Quizzes\" + filename + ext;
+                }
                 _quizManager.Add(quizAddVM);
                 return RedirectToAction(nameof(Index));                
             }

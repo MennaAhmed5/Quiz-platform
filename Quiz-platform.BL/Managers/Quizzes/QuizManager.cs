@@ -1,4 +1,5 @@
 ﻿using Quiz_platform.BL.Managers.Quizzes;
+using Quiz_platform.BL.ViewModels;
 using Quiz_platform.BL.ViewModels.Quizzes;
 using Quiz_platform.DAL.Data.Models;
 using Quiz_platform.DAL.UnitOfWork;
@@ -62,7 +63,7 @@ namespace Quiz_platform.BL.Managers.Quizes
 
         public IEnumerable<QuizReadVM> GetAll()
         {
-            IEnumerable<Quiz> quizzes = _unitOfWork.QuizRepository.GetAll();
+            IEnumerable<Quiz> quizzes = _unitOfWork.QuizRepository.GetAllUsingProc();
 
             IEnumerable<QuizReadVM> quizzesVM = quizzes
                 .Select(q => new QuizReadVM(q.Id, q.Name,q.Description,q.Date));
@@ -89,6 +90,13 @@ namespace Quiz_platform.BL.Managers.Quizes
                 quiz.Image,
                 quiz.Date
                 );
+        }
+
+        public IEnumerable<Option> GetAllAsOptions()
+        {
+            return _unitOfWork.QuizRepository
+                 .GetAll()
+                 .Select(q => new Option(q.Name, q.Id.ToString()));
         }
     }
 }

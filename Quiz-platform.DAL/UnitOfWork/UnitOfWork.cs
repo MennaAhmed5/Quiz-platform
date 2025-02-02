@@ -1,4 +1,5 @@
 ﻿using Quiz_platform.DAL.Data.Context;
+using Quiz_platform.DAL.Repositories.Answers;
 using Quiz_platform.DAL.Repositories.Questions;
 using Quiz_platform.DAL.Repositories.Quizzes;
 using System;
@@ -14,11 +15,13 @@ namespace Quiz_platform.DAL.UnitOfWork
         private readonly QuizContext _context;
         public IQuizRepository QuizRepository { get; }
         public IQuestionRepository QuestionRepository { get; }
-        public UnitOfWork(QuizContext context, IQuizRepository quizRepository, IQuestionRepository questionRepository)
+        public IAnswerRepository AnswerRepository { get; }
+        public UnitOfWork(QuizContext context, IQuizRepository quizRepository, IQuestionRepository questionRepository, IAnswerRepository answerRepository)
         {
             _context = context;
             QuizRepository = quizRepository;
             QuestionRepository = questionRepository;
+            AnswerRepository =answerRepository;
         }
 
         public void SaveChanges()

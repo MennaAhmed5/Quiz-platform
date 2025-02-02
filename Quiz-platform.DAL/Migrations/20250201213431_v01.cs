@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Quiz_platform.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class V01 : Migration
+    public partial class v01 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,10 +76,10 @@ namespace Quiz_platform.DAL.Migrations
                 columns: new[] { "Id", "Date", "Description", "Image", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test your knowledge of C# fundamentals, including syntax, data types, and OOP concepts", "csharp.png", "C# Basics Quiz" },
-                    { 2, new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "A quiz covering Java syntax, OOP concepts, and basic Java programming principles.", "java.png", "Java Fundamentals" },
-                    { 3, new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "A quiz covering Python syntax, data structures, and basic algorithms.", "python.png", "Python for Beginners" },
-                    { 4, new DateTime(2025, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Check your knowledge on SQL queries, normalization, and database management.", "sql.png", "SQL & Databases" }
+                    { 1, new DateTime(2025, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test your knowledge of C# fundamentals, including syntax, data types, and OOP concepts", "Images\\Quizzes\\csharp.png", "C# Basics Quiz" },
+                    { 2, new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "A quiz covering Java syntax, OOP concepts, and basic Java programming principles.", "Images\\Quizzes\\java.png", "Java Fundamentals" },
+                    { 3, new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "A quiz covering Python syntax, data structures, and basic algorithms.", "Images\\Quizzes\\python.png", "Python for Beginners" },
+                    { 4, new DateTime(2025, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Check your knowledge on SQL queries, normalization, and database management.", "Images\\Quizzes\\sql.png", "SQL & Databases" }
                 });
 
             migrationBuilder.InsertData(

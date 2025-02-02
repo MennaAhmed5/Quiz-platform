@@ -1,4 +1,5 @@
-﻿using Quiz_platform.BL.ViewModels.Quizzes;
+﻿using Quiz_platform.BL.ViewModels;
+using Quiz_platform.BL.ViewModels.Quizzes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace Quiz_platform.BL.Managers.Quizzes
         QuizEditVM? GetForEditById(int id);
         void Add(QuizAddVM quizAddVM);
         void Edit(QuizEditVM quizEditVM);
+
+        public IEnumerable<Option> GetAllAsOptions();
 
         //void Delete(int id);
     }

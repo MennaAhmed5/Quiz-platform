@@ -12,8 +12,8 @@ using Quiz_platform.DAL.Data.Context;
 namespace Quiz_platform.DAL.Migrations
 {
     [DbContext(typeof(QuizContext))]
-    [Migration("20250201025837_V01")]
-    partial class V01
+    [Migration("20250201213431_v01")]
+    partial class v01
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -253,7 +253,7 @@ namespace Quiz_platform.DAL.Migrations
                             Id = 1,
                             Date = new DateTime(2025, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Test your knowledge of C# fundamentals, including syntax, data types, and OOP concepts",
-                            Image = "csharp.png",
+                            Image = "Images\\Quizzes\\csharp.png",
                             Name = "C# Basics Quiz"
                         },
                         new
@@ -261,7 +261,7 @@ namespace Quiz_platform.DAL.Migrations
                             Id = 2,
                             Date = new DateTime(2025, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A quiz covering Java syntax, OOP concepts, and basic Java programming principles.",
-                            Image = "java.png",
+                            Image = "Images\\Quizzes\\java.png",
                             Name = "Java Fundamentals"
                         },
                         new
@@ -269,7 +269,7 @@ namespace Quiz_platform.DAL.Migrations
                             Id = 3,
                             Date = new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "A quiz covering Python syntax, data structures, and basic algorithms.",
-                            Image = "python.png",
+                            Image = "Images\\Quizzes\\python.png",
                             Name = "Python for Beginners"
                         },
                         new
@@ -277,7 +277,7 @@ namespace Quiz_platform.DAL.Migrations
                             Id = 4,
                             Date = new DateTime(2025, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Check your knowledge on SQL queries, normalization, and database management.",
-                            Image = "sql.png",
+                            Image = "Images\\Quizzes\\sql.png",
                             Name = "SQL & Databases"
                         });
                 });

@@ -1,11 +1,16 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Quiz_platform.BL.Managers.Answers;
 using Quiz_platform.BL.Managers.Questions;
 using Quiz_platform.BL.Managers.Quizes;
 using Quiz_platform.BL.Managers.Quizzes;
 using Quiz_platform.DAL.Data.Context;
+using Quiz_platform.DAL.Data.Models;
+using Quiz_platform.DAL.Repositories.Answers;
 using Quiz_platform.DAL.Repositories.Questions;
 using Quiz_platform.DAL.Repositories.Quizzes;
 using Quiz_platform.DAL.UnitOfWork;
+using System.Security.Claims;
 
 namespace Quiz_platform
 {
@@ -24,12 +29,40 @@ namespace Quiz_platform
             builder.Services.AddDbContext<QuizContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<QuizContext>();
+
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Users/Login";
+                options.AccessDeniedPath = "/Users/AccessDenied";
+            });
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminPolicy", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Role, "Admin");
+                });
+                options.AddPolicy("UserPolicy", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Role, "User");
+                });              
+            });
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IQuizRepository, QuizRepository>();
             builder.Services.AddScoped<IQuizManager, QuizManager>();
             builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
             builder.Services.AddScoped<IQuestionManager, QuestionManager>();
-
+            builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
+            builder.Services.AddScoped<IAnswerManager, AnwserManager>();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,17 +74,22 @@ namespace Quiz_platform
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Users}/{action=Login}/{id?}");
 
             app.Run();
+
+
         }
     }
 }

@@ -1,8 +1,7 @@
 ﻿@model QuizEditVM
 
-<div class="row" style="height:600px">
-    <div class="col-md-6">
-
+<div class="row">
+    <div class="col-md-4">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <h3>Edit quiz</h3>
             <input asp-for="Id" type="hidden" />
@@ -41,4 +40,5 @@
             <img src="~/@Model.Image" alt="quiz photo" width="300" height="300" />
         </div>
     </div>
+</div>
 </div>

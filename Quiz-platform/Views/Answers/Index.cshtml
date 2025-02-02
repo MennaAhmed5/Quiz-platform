@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AnswerReadVM>
+ 
+        
+        <a class="btn btn-primary" href="/Answers/Add">Add New Answer</a>
+        <br />
+        <br />
+       
+        <table id="myTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Option Text</td>
+                    <td>Is correct</td>
+                    <td>Question Id</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            @*  <tbody>
+                 @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.OptionText</td>
+                        <td>@item.IsCorrect</td>
+                        <td>@item.QuestionId</td>
+                        <td>
+                            <a class="btn btn-success" href="/Questions/Edit/@item.Id">Edit</a>
+                            <a class="btn btn-danger" href="/Questions/Delete/@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                } 
+            </tbody>*@
+        </table>
+ 
+@section Scripts {
+    <script src="~/js/Answers.js"></script>
+}

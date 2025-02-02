@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Quiz_platform.DAL.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Quiz_platform.DAL.Data.Context
 {
-    public class QuizContext : DbContext
+    public class QuizContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Quiz> Quizes { get; set; }
         public DbSet<Question> Questions { get; set; }
